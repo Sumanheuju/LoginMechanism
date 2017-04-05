@@ -24,26 +24,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping(value = "/")
 public class DefaultController {
-    @Autowired
-    private UserDAO uDAO;
+    
     @RequestMapping(method = RequestMethod.GET)
-    public String index(Model model){
-        model.addAttribute("users",uDAO.getAll());
+    public String index(){
         return "index";
     }
-    
-    @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String add(Model model){
-        model.addAttribute("user", new User());
-        return "add";
-    }
-    
-    @RequestMapping(value = "save", method = RequestMethod.POST)
-    @ResponseBody
-    public String save(Model model, @RequestParam("userName") String userName,@RequestParam("email") String email,@RequestParam("password") String password,@RequestParam("status") boolean status,@RequestParam("id") Integer id ){
-        User usr = new User(0, userName, email, password, status);
-        uDAO.insert(usr);
 
-        return "redirect:/index";
-    }
 }
