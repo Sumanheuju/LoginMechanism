@@ -29,7 +29,7 @@ public class UserController {
         return "admin/user/show";
     }
     
-    @RequestMapping(value = "add", method = RequestMethod.GET)
+    @RequestMapping(value = "register", method = RequestMethod.GET)
     public String add(Model model){
         model.addAttribute("user", new User());
         return "admin/user/add";
@@ -40,6 +40,7 @@ public class UserController {
                        @RequestParam(value = "email") String email,
                        @RequestParam(value = "password") String password,
                        @RequestParam(value = "status") String status,
+                       @RequestParam(value = "id") Integer id,
                        Model model){
         
         User usr = new User();
@@ -48,8 +49,13 @@ public class UserController {
         usr.setPassword(password);
         usr.setStatus(Boolean.parseBoolean(status));
         
-        uDAO.insert(usr);
-        
+        if(id == null){
+            uDAO.insert(usr);
+        }else{
+            usr.setId(id);
+            uDAO.update(usr);
+        }
+ 
         return "redirect:show";
     }
 }

@@ -47,8 +47,13 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public void update(User t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(User u) {
+        session = sessionFactory.openSession();
+        trans = session.beginTransaction();
+        session.saveOrUpdate(u);
+        trans.commit();
+        session.close();
+
     }
 
     @Override

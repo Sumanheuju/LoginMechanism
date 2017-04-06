@@ -1,6 +1,6 @@
 <%@include file="../../header.jsp" %>
 <div class="container">
-    <h1>Add Users !!</h1>
+    <h1>Register Users !!</h1>
 
     <form method="post" action="${SITE_URL}/admin/user/save">
         <div class="form-group">

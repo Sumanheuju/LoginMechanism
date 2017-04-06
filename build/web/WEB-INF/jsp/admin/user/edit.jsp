@@ -1,8 +1,6 @@
 <%@include file="../../header.jsp" %>
 <div class="container">
-    <h1>Register Users !!</h1>
-
-    <form method="post" action="${SITE_URL}/admin/user/save">
+    <form>
         <div class="form-group">
             <label for="userName">Username</label>
             <input type="text" class="form-control" name="userName" placeholder="Username">
@@ -15,17 +13,6 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" placeholder="Password">
         </div>
-        <div class="form-group"> 
-            <input type="hidden" name='id'>
-        </div>
-
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="status"> Status
-            </label>
-        </div>
-
-        <button type="submit" class="btn btn-default">Submit</button>
     </form>
 </div>
 
